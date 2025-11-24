@@ -13,10 +13,10 @@ import java.util.List;
 @RequestMapping("/api/aluno-disciplinas")
 public class AlunoDisciplinaController {
 
-    private final AlunoDisciplinaService alunoDisciplinaService;
+    private final AlunoDisciplinaService disciplinaService;
 
-    public AlunoDisciplinaController(AlunoDisciplinaService alunoDisciplinaService) {
-        this.alunoDisciplinaService = alunoDisciplinaService;
+    public AlunoDisciplinaController(AlunoDisciplinaService disciplinaService) {
+        this.disciplinaService = disciplinaService;
     }
 
     /**
@@ -24,28 +24,29 @@ public class AlunoDisciplinaController {
      * semester.
      */
     @PostMapping
-    public ResponseEntity<AlunoDisciplinaDTO> associate(@RequestParam Long alunoId,
+    public ResponseEntity<AlunoDisciplinaDTO> associate(
+                                                        @RequestParam Long alunoId,
                                                         @RequestParam Long disciplinaId,
                                                         @RequestParam Long professorId,
                                                         @RequestParam String semestre) {
         AlunoDisciplinaDTO dto =
-                alunoDisciplinaService.associateAlunoDisciplina(alunoId, disciplinaId, professorId, semestre);
+                disciplinaService.associateAlunoDisciplina(alunoId, disciplinaId, professorId, semestre);
 
         return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 
     @GetMapping("/aluno/{alunoId}")
     public List<AlunoDisciplinaDTO> listByAluno(@PathVariable Long alunoId) {
-        return alunoDisciplinaService.listByAluno(alunoId);
+        return disciplinaService.listByAluno(alunoId);
     }
 
     @GetMapping("/professor/{professorId}")
     public List<AlunoDisciplinaDTO> listByProfessor(@PathVariable Long professorId) {
-        return alunoDisciplinaService.listByProfessor(professorId);
+        return disciplinaService.listByProfessor(professorId);
     }
 
     @GetMapping("/disciplina/{disciplinaId}")
     public List<AlunoDisciplinaDTO> listByDisciplina(@PathVariable Long disciplinaId) {
-        return alunoDisciplinaService.listByDisciplina(disciplinaId);
+        return disciplinaService.listByDisciplina(disciplinaId);
     }
 }

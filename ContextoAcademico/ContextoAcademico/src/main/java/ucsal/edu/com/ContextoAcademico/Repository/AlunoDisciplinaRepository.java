@@ -2,7 +2,6 @@ package ucsal.edu.com.ContextoAcademico.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ucsal.edu.com.ContextoAcademico.Entity.Aluno;
 import ucsal.edu.com.ContextoAcademico.Entity.AlunoDisciplina;
 
 import java.util.List;

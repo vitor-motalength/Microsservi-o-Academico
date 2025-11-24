@@ -16,13 +16,13 @@ import java.util.stream.Collectors;
 public class AlunoService {
 
     private final AlunoRepository alunoRepository;
-    private final WebClient webClient; // Mantido conforme você pediu
+    private final WebClient webClient;
 
     public AlunoService(AlunoRepository alunoRepository, WebClient.Builder webClientBuilder) {
         this.alunoRepository = alunoRepository;
 
         this.webClient = webClientBuilder
-                .baseUrl("http://localhost:8082") // <-- URL do outro microserviço (ajuste se necessário)
+                .baseUrl("http://localhost:8080") // <-- URL do outro microserviço (ajuste se necessário)
                 .build();
     }
 
